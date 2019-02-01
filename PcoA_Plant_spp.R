@@ -31,8 +31,8 @@ nitrogen<-treatments[,2]
 pcoa.res <- dbrda(trans.df ~ 1, distance = "bray")
 summary(pcoa.res)
 
-png("figures/Plant_Nitrogen.png",res = 300, pointsize = 12,height=5.5,width=8,units="in")
-ordiplot(pcoa.res, type = "none", las = 1, main = "PCoA with Bray-Curtis - Nitrogen (95%)", xlab = "MDS1 (7.4%)", ylab = "MDS2 (4.4%)")
+png("figures/Plant_Nitrogen_all_water_treatments.png",res = 300, pointsize = 12,height=5.5,width=8,units="in")
+ordiplot(pcoa.res, type = "none", las = 1, main = "PLANT - PCoA with Bray-Curtis - Nitrogen (95%)",xlab = "MDS1 (26%)", ylab = "MDS2 (21%)")
 
 #Ellipses are put onto the image before points, so points sit on top of confidence intervals and are more visable
 ordiellipse(pcoa.res, nitrogen, draw="polygon", border = NA, kind = "sd", conf = 0.95, label = FALSE, col = c(wes_palette("Darjeeling1")[5],wes_palette("Darjeeling1")[3]), lty = c(2))
@@ -64,8 +64,8 @@ pcoa.res <- dbrda(trans.df ~ 1, distance = "bray")
 summary(pcoa.res)
 png("figures/Plant_Water.png",res = 300, pointsize = 12,height=5.5,width=8,units="in")
 ordiplot(pcoa.res, type = "none", las = 1, main = "PCoA with Bray-Curtis - Water (95%)", xlab = "MDS1 (8.3%)", ylab = "MDS2 (4.5%)")
-
-ordiellipse(pcoa.res, water, draw="polygon", border = NA, kind = "sd", conf = 0.95, label = FALSE, col = c(wes_palette("Darjeeling1")[5],wes_palette("Darjeeling1")[3], wes_palette("Darjeeling1")[2]), lty = c(2))
+mtext(text ="ALL NITROGEN TREATMENTS",side = 3)
+ordiellipse(pcoa.res, water, draw="polygon", border = NA, kind = "sd", conf = 0.95, label = FALSE, col = c(wes_palette("Darjeeling1")[2],wes_palette("Darjeeling1")[3], wes_palette("Darjeeling1")[5]), lty = c(2))
 
 points(pcoa.res, display = "sites", col = colvec_water, pch = 20, cex = 2)
 
